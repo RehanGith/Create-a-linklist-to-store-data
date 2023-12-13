@@ -29,7 +29,7 @@ linklist::linklist(linklist& ll) {
 	link* current = ll.first;
 	while (current) {
 		link* newlink = new link; //make a new link
-		newlink->data = ll.first->data; //give it data
+		newlink->data = current->data; //give it data
 		newlink->next = first; //it points to next link
 		first = newlink; //now first points to this
 		current = current->next;
@@ -39,7 +39,7 @@ linklist linklist::operator=(linklist& ll) {
 	link* current = ll.first;
 	while (current) {
 		link* newlink = new link; //make a new link
-		newlink->data = ll.first->data; //give it data
+		newlink->data = current->data; //give it data
 		newlink->next = first; //it points to next link
 		first = newlink; //now first points to this
 		current = current->next;
@@ -80,12 +80,8 @@ int main()
 	li.additem(36);
 	li.additem(49);
 	li.additem(64);
-	linklist l2(li);
-	l2.additem(20);
-
-	li.display();
+	linklist l2;
 	//display entire list
-	l2.display();
-
+	l2 = li;
 	return 0;
 }
