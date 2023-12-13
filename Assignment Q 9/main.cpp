@@ -18,15 +18,16 @@ public:
 	{
 		first = NULL;
 	} //no first link
-	linklist(linklist& ll);
-	linklist operator =(linklist& ll);
+	linklist(const linklist& ll);
+	linklist& operator =(const linklist& ll);
 	void additem(int d); //add data item (one link)
 	void display(); //display all links
 	~linklist();
 };
 //--------------------------------------------------------------
-linklist::linklist(linklist& ll) {
+linklist::linklist(const linklist& ll) {
 	link* current = ll.first;
+	first = NULL;
 	while (current) {
 		link* newlink = new link; //make a new link
 		newlink->data = current->data; //give it data
@@ -35,8 +36,9 @@ linklist::linklist(linklist& ll) {
 		current = current->next;
 	}
 }
-linklist linklist::operator=(linklist& ll) {
+linklist& linklist::operator=(const linklist& ll) {
 	link* current = ll.first;
+	first = NULL;
 	while (current) {
 		link* newlink = new link; //make a new link
 		newlink->data = current->data; //give it data
